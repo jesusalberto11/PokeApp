@@ -1,35 +1,35 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { StyleSheet, View, Text, FlatList } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { AppStyles } from "../config/Styles";
+import PokemonList from "../components/PokemonList/PokemonList.js";
 
 const IndexPage = () => {
   const [pokemons, setPokemons] = useState([0]);
   const [isLoading, setIsloading] = useState(true);
 
   useEffect(() => {
-    fetchPokemonData();
+    fetchAllPokemonsData();
   }, []);
 
-  const fetchPokemonData = () => {
+  const fetchAllPokemonsData = () => {
     axios
-      .get("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
-      .then((response) => onResponse(response))
-      .catch((error) => console.log("Error: ", error))
-      .finally(() => setIsloading(false));
+      .get("https://pokeapi.co/api/v2/pokemon?limit=10&offset=0")
+      .then((response) => fetchPokemons(response.data.results))
+      .catch((error) => console.log("Error: ", error));
   };
 
-  const onResponse = (response) => {
-    setPokemons(response.data.results);
-  };
-
-  const renderItem = ({ item }) => {
-    return (
-      <View style={styles.listItem}>
-        <Text>{item.name}</Text>
-      </View>
-    );
+  const fetchPokemons = (pokemonsArr) => {
+    pokemonsArr?.map((item) => {
+      axios
+        .get(item.url)
+        .then((response) =>
+          setPokemons((pokemons) => [...pokemons, response.data])
+        )
+        .catch((error) => console.log("Error: ", error))
+        .finally(() => setIsloading(false));
+    });
   };
 
   return (
@@ -39,13 +39,7 @@ const IndexPage = () => {
         {isLoading ? (
           <Text>Is Loading</Text>
         ) : (
-          <FlatList
-            contentContainerStyle={styles.list}
-            data={pokemons}
-            keyExtractor={(item) => item.url}
-            renderItem={renderItem}
-            numColumns={2}
-          />
+          <PokemonList pokemons={pokemons} />
         )}
       </View>
     </View>
@@ -57,25 +51,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: AppStyles.colors.backgroundColor,
   },
-  flatList: {
-    alignItems: "center",
-    justifyContent: "center",
-  },
   list: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
-  },
-  listItem: {
-    backgroundColor: AppStyles.colors.listItemColor,
-    width: 150,
-    height: 150,
-    marginBottom: 10,
-    margin: 10,
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
   },
 });
 
