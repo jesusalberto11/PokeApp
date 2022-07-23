@@ -1,43 +1,33 @@
 import React from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { StyleSheet, View, Text, FlatList } from "react-native";
 import { AppStyles } from "../config/Styles";
 
-const DATA = [
-  {
-    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    title: "First Item",
-  },
-  {
-    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-    title: "Second Item",
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    title: "Third Item",
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96-145571e29d71",
-    title: "Fourd Item",
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96-145571e29d70",
-    title: "Five Item",
-  },
-  {
-    id: "5869410f-3da1-471f-bd96-145571e29d72",
-    title: "Six Item",
-  },
-  {
-    id: "58694a0f-1da1-471f-bd96-145571e29d72",
-    title: "Seven Item",
-  },
-];
-
 const IndexPage = () => {
+  const [pokemons, setPokemons] = useState([0]);
+  const [isLoading, setIsloading] = useState(true);
+
+  useEffect(() => {
+    fetchPokemonData();
+  }, []);
+
+  const fetchPokemonData = () => {
+    axios
+      .get("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
+      .then((response) => onResponse(response))
+      .catch((error) => console.log("Error: ", error))
+      .finally(() => setIsloading(false));
+  };
+
+  const onResponse = (response) => {
+    setPokemons(response.data.results);
+  };
+
   const renderItem = ({ item }) => {
     return (
       <View style={styles.listItem}>
-        <Text>{item.title}</Text>
+        <Text>{item.name}</Text>
       </View>
     );
   };
@@ -45,15 +35,18 @@ const IndexPage = () => {
   return (
     <View style={styles.container}>
       <Text>Hello world from index!</Text>
-
       <View style={styles.list}>
-        <FlatList
-          contentContainerStyle={styles.list}
-          data={DATA}
-          keyExtractor={(item) => item.id}
-          renderItem={renderItem}
-          numColumns={2}
-        />
+        {isLoading ? (
+          <Text>Is Loading</Text>
+        ) : (
+          <FlatList
+            contentContainerStyle={styles.list}
+            data={pokemons}
+            keyExtractor={(item) => item.url}
+            renderItem={renderItem}
+            numColumns={2}
+          />
+        )}
       </View>
     </View>
   );
@@ -81,6 +74,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     margin: 10,
     borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
