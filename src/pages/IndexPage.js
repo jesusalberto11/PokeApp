@@ -6,7 +6,7 @@ import { AppStyles } from "../config/Styles";
 import PokemonList from "../components/PokemonList/PokemonList.js";
 
 const IndexPage = () => {
-  const [pokemons, setPokemons] = useState([0]);
+  const [pokemons, setPokemons] = useState([]);
   const [isLoading, setIsloading] = useState(true);
 
   useEffect(() => {
