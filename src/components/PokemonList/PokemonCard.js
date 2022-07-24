@@ -1,16 +1,14 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Image } from "react-native";
 import { AppStyles } from "../../config/Styles";
 
 const PokemonCard = ({ pokemon }) => {
   return (
     <View style={styles.listItem}>
       <View style={styles.pokemonImage}>
-        <img
-          src={pokemon?.sprites.front_default}
-          width={100}
-          height={100}
-          alt={pokemon?.name}
+        <Image
+          style={styles.tinyLogo}
+          source={{ uri: pokemon?.sprites.front_default }}
         />
       </View>
       <View style={styles.pokemonDetails}>
@@ -29,13 +27,16 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     margin: 10,
     borderRadius: 10,
-    flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },
   pokemonImage: {
     flex: 2,
     backgroundColor: "blue",
+  },
+  tinyLogo: {
+    width: 100,
+    height: 100,
   },
   pokemonDetails: {
     flex: 1,

@@ -17,7 +17,7 @@ const PokemonList = ({ pokemons }) => {
   };
 
   return (
-    <View>
+    <View style={styles.pokemonListContainer}>
       <FlatList
         contentContainerStyle={styles.pokemonList}
         data={pokemons}
@@ -30,22 +30,15 @@ const PokemonList = ({ pokemons }) => {
 };
 
 const styles = StyleSheet.create({
-  pokemonList: {
+  pokemonListContainer: {
     flex: 1,
+
+    padding: 5,
+  },
+  pokemonList: {
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
-  },
-  listItem: {
-    backgroundColor: AppStyles.colors.listItemColor,
-    width: 150,
-    height: 150,
-    marginBottom: 10,
-    margin: 10,
-    borderRadius: 10,
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
   },
 });
 

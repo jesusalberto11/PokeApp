@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, SafeAreaView } from "react-native";
 import { AppStyles } from "../config/Styles";
 import PokemonList from "../components/PokemonList/PokemonList.js";
 
@@ -15,7 +15,7 @@ const IndexPage = () => {
 
   const fetchAllPokemonsData = () => {
     axios
-      .get("https://pokeapi.co/api/v2/pokemon?limit=10&offset=0")
+      .get("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0")
       .then((response) => fetchPokemons(response.data.results))
       .catch((error) => console.log("Error: ", error));
   };
@@ -34,7 +34,6 @@ const IndexPage = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Hello world from index!</Text>
       <View style={styles.list}>
         {isLoading ? (
           <Text>Is Loading</Text>
