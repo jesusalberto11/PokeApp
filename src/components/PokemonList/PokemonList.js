@@ -18,11 +18,18 @@ const PokemonList = ({ pokemons }) => {
         }}
       >
         <View style={styles.listItem}>
-          <img src={pokemon?.sprites.front_default} />
-          <Text>{pokemon?.name}</Text>
-          <Text>{pokemon?.id}</Text>
-          <Text>{pokemon?.order}</Text>
-          <Text>{pokemon?.base_experience}</Text>
+          <View style={styles.pokemonImage}>
+            <img
+              src={pokemon?.sprites.front_default}
+              width={100}
+              height={100}
+              alt={pokemon?.name}
+            />
+          </View>
+          <View style={styles.pokemonDetails}>
+            <Text style={styles.pokemonName}>{pokemon?.name}</Text>
+            <Text>Type: {pokemon?.types[0].type.name}</Text>
+          </View>
         </View>
       </TouchableOpacity>
     );
@@ -55,8 +62,21 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     margin: 10,
     borderRadius: 10,
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  pokemonImage: {
+    flex: 2,
+    backgroundColor: "blue",
+  },
+  pokemonDetails: {
+    flex: 1,
+    backgroundColor: "red",
+  },
+  pokemonName: {
+    fontSize: 18,
+    fontWeight: "bold",
   },
 });
 
