@@ -1,14 +1,13 @@
 import React from "react";
 import { StyleSheet, View, FlatList, TouchableOpacity } from "react-native";
-import { AppStyles } from "../../config/Styles";
 import PokemonCard from "./PokemonCard";
 
-const PokemonList = ({ pokemons }) => {
+const PokemonList = ({ pokemons, navigation }) => {
   const renderItem = ({ item: pokemon }) => {
     return (
       <TouchableOpacity
         onPress={() => {
-          console.log(pokemon.id);
+          navigation.navigate("PokemonPage", { pokemon });
         }}
       >
         <PokemonCard pokemon={pokemon} />
@@ -32,7 +31,6 @@ const PokemonList = ({ pokemons }) => {
 const styles = StyleSheet.create({
   pokemonListContainer: {
     flex: 1,
-
     padding: 5,
   },
   pokemonList: {
