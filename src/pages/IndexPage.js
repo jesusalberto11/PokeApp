@@ -1,11 +1,11 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { StyleSheet, View, Text, SafeAreaView } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { AppStyles } from "../config/Styles";
 import PokemonList from "../components/PokemonList/PokemonList.js";
 
-const IndexPage = () => {
+const IndexPage = ({ navigation }) => {
   const [pokemons, setPokemons] = useState([]);
   const [isLoading, setIsloading] = useState(true);
 
@@ -38,7 +38,7 @@ const IndexPage = () => {
         {isLoading ? (
           <Text>Is Loading</Text>
         ) : (
-          <PokemonList pokemons={pokemons} />
+          <PokemonList pokemons={pokemons} navigation={navigation} />
         )}
       </View>
     </View>
@@ -54,7 +54,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    padding: 20,
   },
 });
 
