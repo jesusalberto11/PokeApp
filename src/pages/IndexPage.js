@@ -1,19 +1,25 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { StyleSheet, View, Text } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addPokemonToStore,
+  setIsLoading,
+} from "../features/pokemons/PokemonSlice";
 import { AppStyles } from "../config/Styles";
 import PokemonList from "../components/PokemonList/PokemonList.js";
 
 const IndexPage = ({ navigation }) => {
-  const [pokemons, setPokemons] = useState([]);
-  const [isLoading, setIsloading] = useState(true);
+  const pokemonStore = useSelector((state) => state.pokemons);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetchAllPokemonsData();
   }, []);
 
   const fetchAllPokemonsData = () => {
+    dispatch(setIsLoading(true));
     axios
       .get("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0")
       .then((response) => fetchPokemons(response.data.results))
@@ -24,21 +30,22 @@ const IndexPage = ({ navigation }) => {
     pokemonsArr?.map((item) => {
       axios
         .get(item.url)
-        .then((response) =>
-          setPokemons((pokemons) => [...pokemons, response.data])
-        )
+        .then((response) => dispatch(addPokemonToStore(response.data)))
         .catch((error) => console.log("Error: ", error))
-        .finally(() => setIsloading(false));
+        .finally(() => dispatch(setIsLoading(false)));
     });
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.list}>
-        {isLoading ? (
+        {pokemonStore.isLoading ? (
           <Text>Is Loading</Text>
         ) : (
-          <PokemonList pokemons={pokemons} navigation={navigation} />
+          <PokemonList
+            pokemons={pokemonStore.allPokemons}
+            navigation={navigation}
+          />
         )}
       </View>
     </View>
