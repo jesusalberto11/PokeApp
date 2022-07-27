@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import { AppStyles } from "../../config/Styles";
 
@@ -12,8 +12,8 @@ const PokemonCard = ({ pokemon }) => {
         />
       </View>
       <View style={styles.pokemonDetails}>
-        <Text style={styles.pokemonName}>{pokemon?.name}</Text>
-        <Text>Type: {pokemon?.types[0].type.name}</Text>
+        <Text style={styles.pokemonName}>{pokemon?.name.toUpperCase()}</Text>
+        <Text>{pokemon?.types[0].type.name.toUpperCase()}</Text>
       </View>
     </View>
   );
@@ -29,10 +29,22 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
+
+    borderWidth: 1,
+    borderRadius: 10,
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.43,
+    shadowRadius: 9.51,
+
+    elevation: 15,
   },
   pokemonImage: {
     flex: 2,
-    backgroundColor: "blue",
   },
   tinyLogo: {
     width: 100,
@@ -40,7 +52,10 @@ const styles = StyleSheet.create({
   },
   pokemonDetails: {
     flex: 1,
-    backgroundColor: "red",
+    width: "100%",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderRadius: 10,
   },
   pokemonName: {
     fontSize: 18,
@@ -48,4 +63,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PokemonCard;
+export default memo(PokemonCard);
