@@ -57,10 +57,9 @@ const styles = StyleSheet.create({
   },
   statsName: {
     flex: 1,
-    textAlign: "center",
+    textAlign: "right",
     fontWeight: "bold",
-    alignItems: "center",
-    justifyContent: "center",
+    marginLeft: 10,
   },
   statsValues: {
     flex: 3,
