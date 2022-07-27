@@ -39,7 +39,7 @@ const IndexPage = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.list}>
-        {pokemonStore.isLoading ? (
+        {pokemonStore.allPokemons.length !== 20 ? (
           <Text>Is Loading</Text>
         ) : (
           <PokemonList
