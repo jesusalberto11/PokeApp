@@ -1,8 +1,17 @@
 import React from "react";
-import { StyleSheet, View, FlatList, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  View,
+  FlatList,
+  TouchableOpacity,
+  ToastAndroid,
+} from "react-native";
 import PokemonCard from "./PokemonCard";
+import { useSelector } from "react-redux";
 
-const PokemonList = ({ pokemons, navigation }) => {
+const PokemonList = ({ pokemons, navigation, fetchNewPage }) => {
+  const pokemonStore = useSelector((state) => state.pokemons);
+
   const renderItem = ({ item: pokemon }) => {
     return (
       <TouchableOpacity
@@ -15,6 +24,19 @@ const PokemonList = ({ pokemons, navigation }) => {
     );
   };
 
+  const showLoadingToast = () => {
+    ToastAndroid.showWithGravity(
+      "¡Loading new pokemons!",
+      ToastAndroid.LONG,
+      ToastAndroid.CENTER
+    );
+  };
+
+  const handleOnEndReached = () => {
+    console.log(pokemonStore.isFetchingNewPokemons);
+    showLoadingToast(), fetchNewPage();
+  };
+
   return (
     <View style={styles.pokemonListContainer}>
       <FlatList
@@ -23,6 +45,8 @@ const PokemonList = ({ pokemons, navigation }) => {
         keyExtractor={(pokemon) => pokemon.id}
         renderItem={renderItem}
         numColumns={2}
+        onEndReachedThreshold={0.1}
+        onEndReached={handleOnEndReached}
       />
     </View>
   );
