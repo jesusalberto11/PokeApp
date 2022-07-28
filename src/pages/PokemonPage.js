@@ -6,6 +6,7 @@ import PokemonBaseStats from "../components/PokemonPage/PokemonBaseStats";
 import PokemonTypes from "../components/PokemonPage/PokemonTypes";
 import PokemonStats from "../components/PokemonPage/PokemonStats";
 import PokemonAbilities from "../components/PokemonPage/PokemonAbilities";
+import { AppStyles } from "../config/Styles";
 
 const PokemonPage = ({ route }) => {
   const { pokemon } = route.params;
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
+    backgroundColor: AppStyles.colors.backgroundColor,
   },
   PokemonDetailsContainer: {
     flex: 3,
