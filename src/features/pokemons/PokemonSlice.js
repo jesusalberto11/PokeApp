@@ -4,6 +4,7 @@ const initialState = {
   allPokemons: [],
   currentPokemon: [],
   isLoading: true,
+  isFetchingNewPokemons: true,
 };
 
 export const pokemonSlice = createSlice({
@@ -22,10 +23,20 @@ export const pokemonSlice = createSlice({
     setIsLoading: (state, action) => {
       state.isLoading = action.payload;
     },
+    setIsFetchingNewPokemons: (state, action) => {
+      /*ESTA VAINA NO SE ACTUALIZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 
+      PINIA > REDUX*/
+      const newState = action.payload;
+      state.isFetchingNewPokemons = newState;
+    },
   },
 });
 
-export const { addPokemonToStore, getPokemonById, setIsLoading } =
-  pokemonSlice.actions;
+export const {
+  addPokemonToStore,
+  getPokemonById,
+  setIsLoading,
+  setIsFetchingNewPokemons,
+} = pokemonSlice.actions;
 
 export default pokemonSlice.reducer;
