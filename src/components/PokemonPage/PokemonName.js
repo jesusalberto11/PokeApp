@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 const PokemonName = ({ name }) => {
   return (
     <View style={styles.pokemonNameContainer}>
-      <Text style={styles.pokemonName}>{name}</Text>
+      <Text style={styles.pokemonName}>{name.toUpperCase()}</Text>
     </View>
   );
 };
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
   pokemonName: {
     fontSize: 36,
-    fontWeight: "200",
+    fontWeight: "bold",
   },
 });
 
