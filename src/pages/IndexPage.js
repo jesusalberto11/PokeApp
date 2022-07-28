@@ -6,7 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   addPokemonToStore,
   setIsLoading,
-  setIsFetchingNewPokemons,
+  setFetchingNewPokemonsStart,
+  setFetchingNewPokemonsEnded,
 } from "../features/pokemons/PokemonSlice";
 import { AppStyles } from "../config/Styles";
 import PokemonList from "../components/PokemonList/PokemonList.js";
@@ -32,8 +33,7 @@ const IndexPage = ({ navigation }) => {
   };
 
   const fetchNewPage = () => {
-    console.log(nextURL);
-    dispatch(setIsFetchingNewPokemons(true));
+    dispatch(setFetchingNewPokemonsStart());
     console.log("before fetch: ", pokemonStore.isFetchingNewPokemons);
 
     axios
@@ -54,7 +54,7 @@ const IndexPage = ({ navigation }) => {
     }
 
     dispatch(setIsLoading(false));
-    dispatch(setIsFetchingNewPokemons(false));
+    dispatch(setFetchingNewPokemonsEnded());
   };
 
   return (

@@ -1,33 +1,31 @@
-import { createSlice, current } from "@reduxjs/toolkit";
-
-const initialState = {
-  allPokemons: [],
-  currentPokemon: [],
-  isLoading: true,
-  isFetchingNewPokemons: true,
-};
+import { createSlice } from "@reduxjs/toolkit";
 
 export const pokemonSlice = createSlice({
-  name: "pokemons",
-  initialState,
+  name: "pokemonlist",
+  initialState: {
+    allPokemons: [],
+    currentPokemon: [],
+    isLoading: true,
+    isFetchingNewPokemons: true,
+  },
   reducers: {
     addPokemonToStore: (state, action) => {
       state.allPokemons = [...state.allPokemons, action.payload];
     },
     getPokemonById: (state, action) => {
-      const pokemons = current(state.allPokemons);
-      let finded = pokemons.filter((pkm) => pkm.id === action.payload);
+      let finded = state.allPokemons.filter((pkm) => pkm.id === action.payload);
 
       state.currentPokemon = finded[0];
     },
     setIsLoading: (state, action) => {
       state.isLoading = action.payload;
     },
-    setIsFetchingNewPokemons: (state, action) => {
-      /*ESTA VAINA NO SE ACTUALIZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 
-      PINIA > REDUX*/
-      const newState = action.payload;
-      state.isFetchingNewPokemons = newState;
+    setFetchingNewPokemonsStart: (state) => {
+      /*POR ALGUNA RAZÓN NIGUNO SIRVE*/
+      state.isFetchingNewPokemons = state.isFetchingNewPokemons;
+    },
+    setFetchingNewPokemonsEnded: (state) => {
+      state.isFetchingNewPokemons = !state.isFetchingNewPokemons;
     },
   },
 });
@@ -36,7 +34,8 @@ export const {
   addPokemonToStore,
   getPokemonById,
   setIsLoading,
-  setIsFetchingNewPokemons,
+  setFetchingNewPokemonsStart,
+  setFetchingNewPokemonsEnded,
 } = pokemonSlice.actions;
 
 export default pokemonSlice.reducer;
