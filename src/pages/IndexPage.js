@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import {
   addPokemonToStore,
@@ -10,6 +10,7 @@ import {
 } from "../features/pokemons/PokemonSlice";
 import { AppStyles } from "../config/Styles";
 import PokemonList from "../components/PokemonList/PokemonList.js";
+import ListButtons from "../components/PokemonList/ListButtons";
 
 const IndexPage = ({ navigation }) => {
   const [pokemonURL, setPokemonURL] = useState(
@@ -80,22 +81,12 @@ const IndexPage = ({ navigation }) => {
               fetchNewPage={fetchNewPage}
               fetchPreviousPage={fetchPreviousPage}
             />
-            <View style={styles.buttonsContainer}>
-              <Button
-                onPress={fetchPreviousPage}
-                title="Previous"
-                color={AppStyles.colors.listItemColor}
-                accessibilityLabel="Fetch previous page"
-                disabled={previousURL === null || previousURL === undefined}
-              />
-              <Button
-                onPress={fetchNewPage}
-                title="Next"
-                color={AppStyles.colors.listItemColor}
-                accessibilityLabel="Fetch next page"
-                disabled={nextURL === null || nextURL === undefined}
-              />
-            </View>
+            <ListButtons
+              fetchNewPage={fetchNewPage}
+              fetchPreviousPage={fetchPreviousPage}
+              nextURL={nextURL}
+              previousURL={previousURL}
+            />
           </View>
         )}
       </View>
@@ -112,14 +103,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-  },
-  buttonsContainer: {
-    backgroundColor: AppStyles.colors.headerColor,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    width: "100%",
-    height: 50,
   },
 });
 
