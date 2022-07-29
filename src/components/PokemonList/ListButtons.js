@@ -40,10 +40,24 @@ const ListButtons = ({
                 previousURL === null || previousURL === undefined
                   ? "#202020"
                   : "#fff",
+              fontSize: 10,
             },
           ]}
         >
-          PREVIOUS
+          ← PREVIOUS
+        </Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={[
+          styles.button,
+          { backgroundColor: AppStyles.colors.listItemColor },
+        ]}
+        onPress={() => {}}
+      >
+        <Text style={[styles.text, { color: "#fff", fontSize: 10 }]}>
+          {" "}
+          SEARCH 🔎︎
         </Text>
       </TouchableOpacity>
 
@@ -66,10 +80,11 @@ const ListButtons = ({
             {
               color:
                 nextURL === null || nextURL === undefined ? "#202020" : "#fff",
+              fontSize: 10,
             },
           ]}
         >
-          NEXT
+          NEXT →
         </Text>
       </TouchableOpacity>
     </View>
