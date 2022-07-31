@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  Button,
-  View,
-  TouchableOpacity,
-  Text,
-  Pressable,
-} from "react-native";
+import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import { AppStyles } from "../../config/Styles";
 
 const ListButtons = ({
@@ -14,7 +7,12 @@ const ListButtons = ({
   previousURL,
   fetchNewPage,
   fetchPreviousPage,
+  navigation,
 }) => {
+  const navigateToSearchPage = () => {
+    navigation.navigate("SearchPage");
+  };
+
   return (
     <View style={styles.ListButtonsContainer}>
       <TouchableOpacity
@@ -53,7 +51,7 @@ const ListButtons = ({
           styles.button,
           { backgroundColor: AppStyles.colors.listItemColor },
         ]}
-        onPress={() => {}}
+        onPress={navigateToSearchPage}
       >
         <Text style={[styles.text, { color: "#fff", fontSize: 10 }]}>
           {" "}
