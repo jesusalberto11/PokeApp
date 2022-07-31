@@ -1,7 +1,7 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
-const SearchPage = ({ navigation }) => {
+const SearchPage = () => {
   return (
     <View style={styles.SearchPageContainer}>
       <Text>Hello world from SearchPage</Text>
