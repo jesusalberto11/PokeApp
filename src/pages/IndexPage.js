@@ -86,6 +86,7 @@ const IndexPage = ({ navigation }) => {
               fetchPreviousPage={fetchPreviousPage}
               nextURL={nextURL}
               previousURL={previousURL}
+              navigation={navigation}
             />
           </View>
         )}
