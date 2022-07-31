@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { store } from "./src/app/store";
 import IndexPage from "./src/pages/IndexPage";
 import PokemonPage from "./src/pages/PokemonPage";
+import SearchPage from "./src/pages/SearchPage";
 import { AppStyles } from "./src/config/Styles";
 
 const Stack = createNativeStackNavigator();
@@ -35,6 +36,20 @@ export default function App() {
               component={PokemonPage}
               options={{
                 title: "Pokemon details",
+                headerStyle: {
+                  backgroundColor: AppStyles.colors.headerColor,
+                },
+                headerTintColor: "#fff",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                },
+              }}
+            />
+            <Stack.Screen
+              name="SearchPage"
+              component={SearchPage}
+              options={{
+                title: "Search Pokemon",
                 headerStyle: {
                   backgroundColor: AppStyles.colors.headerColor,
                 },
