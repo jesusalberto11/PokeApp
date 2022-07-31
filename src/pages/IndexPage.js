@@ -14,7 +14,7 @@ import ListButtons from "../components/PokemonList/ListButtons";
 
 const IndexPage = ({ navigation }) => {
   const [pokemonURL, setPokemonURL] = useState(
-    "https://pokeapi.co/api/v2/pokemon?limit=25&offset=0"
+    "https://pokeapi.co/api/v2/pokemon?limit=50&offset=0"
   );
   const [nextURL, setNextURL] = useState("");
   const [previousURL, setPreviousURL] = useState("");
@@ -71,7 +71,7 @@ const IndexPage = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.list}>
-        {pokemonStore.allPokemons.length !== 25 ? (
+        {pokemonStore.allPokemons.length !== 50 ? (
           <Text>Is Loading</Text>
         ) : (
           <View>
