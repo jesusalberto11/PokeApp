@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   abilityName: {
     textAlign: "center",
-    fontSize: 12,
+    fontSize: 10,
     fontWeight: "bold",
   },
 });

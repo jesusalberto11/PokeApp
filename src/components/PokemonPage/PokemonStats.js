@@ -39,7 +39,7 @@ const PokemonStats = ({ stats }) => {
 
 const styles = StyleSheet.create({
   statsContainer: {
-    flex: 0.6,
+    flex: 0.8,
     padding: 5,
   },
   title: {
