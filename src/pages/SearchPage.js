@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import {
   StyleSheet,
@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   ToastAndroid,
 } from "react-native";
+import { AppStyles } from "../config/Styles";
 
 const SearchPage = ({ navigation }) => {
   const [searchInput, setSearchInput] = useState("");
@@ -55,7 +56,7 @@ const SearchPage = ({ navigation }) => {
     <View style={styles.SearchPageContainer}>
       <TextInput
         blurOnSubmit={true}
-        placeholder="Search pokemon..."
+        placeholder="Type pokemon name..."
         style={styles.input}
         value={searchInput}
         onChangeText={setSearchInput}
@@ -73,6 +74,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: AppStyles.colors.backgroundColor,
   },
   input: {
     width: "90%",
