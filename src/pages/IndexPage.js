@@ -11,6 +11,7 @@ import {
 import { AppStyles } from "../config/Styles";
 import PokemonList from "../components/PokemonList/PokemonList.js";
 import ListButtons from "../components/PokemonList/ListButtons";
+import SkeletonList from "../components/PokemonList/SkeletonList";
 
 const IndexPage = ({ navigation }) => {
   const [pokemonURL, setPokemonURL] = useState(
@@ -72,7 +73,9 @@ const IndexPage = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.list}>
         {pokemonStore.allPokemons.length !== 50 ? (
-          <Text>Is Loading</Text>
+          <View>
+            <SkeletonList />
+          </View>
         ) : (
           <View>
             <PokemonList
