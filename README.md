@@ -15,7 +15,6 @@
   * [Installation and Run Locally](#running-installation-and-run-locally)
   * [Deployment](#triangular_flag_on_post-deployment)
 - [Contributing](#wave-contributing)
-- [License](#warning-license)
 - [Contact](#handshake-contact)
 - [Acknowledgements](#gem-acknowledgements)
 
@@ -86,7 +85,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd Rick-Morty-Api
+  cd PokeApp
 ```
 
 Install dependencies
@@ -95,19 +94,24 @@ Install dependencies
   npm install
 ```
 
-Start the development server
+Start the development server (Android and IOS)
 
 ```bash
-  npm run serve
+  expo start
+```
+
+Start the development server (Web)
+
+```bash
+  expo start:web
 ```
 
 <!-- Deployment -->
 ### :triangular_flag_on_post: Deployment
 
-To deploy this project run
+To deploy this project please check the following link:
 
-```bash
-  npm run build
+<a href="https://docs.expo.dev/build/setup/" target="_SEJ" rel="”noreferrer”"> Check Expo Building Docs</a>
 ```
 
 <!-- Contributing -->
@@ -122,11 +126,6 @@ Contributions are always welcome!
 
 Please send a message if you're interested in contributing to the proyect.
 
-<!-- License -->
-## :warning: License
-
-Distributed under the MIT License. See LICENSE for more information.
-
 <!-- Contact -->
 ## :handshake: Contact
 
@@ -134,7 +133,5 @@ Jesus Alberto - [@LinkedIn](https://www.linkedin.com/in/jesus-alberto-morales-ri
 
 <!-- Acknowledgments -->
 ## :gem: Acknowledgements
-
-This project helped me understand the basics of Vue JS, I learned how to create and reuse components, make calls to public APIs, manage information between components, the use of the Vue Router, and finally how to use Pinia and a custom hook to display information to the diferent parts of the application.
 
 This project helped me understand the basics of React Native, I learned how to create and reuse components, make calls to public APIs, manage information between components, the use of the React Native Router, and finally how to use Redux Toolkit to display information to the diferent parts of the application.
