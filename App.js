@@ -7,6 +7,8 @@ import { store } from "./src/app/store";
 import IndexPage from "./src/pages/IndexPage";
 import PokemonPage from "./src/pages/PokemonPage";
 import SearchPage from "./src/pages/SearchPage";
+import AboutPage from "./src/pages/AboutPage";
+import AboutButton from "./src/components/AboutPage/AboutButton";
 import { AppStyles } from "./src/config/Styles";
 
 const Stack = createNativeStackNavigator();
@@ -20,7 +22,7 @@ export default function App() {
             <Stack.Screen
               name="Home"
               component={IndexPage}
-              options={{
+              options={({ navigation }) => ({
                 title: "Pokedex",
                 headerStyle: {
                   backgroundColor: AppStyles.colors.headerColor,
@@ -29,7 +31,8 @@ export default function App() {
                 headerTitleStyle: {
                   fontWeight: "bold",
                 },
-              }}
+                headerRight: () => <AboutButton navigation={navigation} />,
+              })}
             />
             <Stack.Screen
               name="PokemonPage"
@@ -50,6 +53,20 @@ export default function App() {
               component={SearchPage}
               options={{
                 title: "Search Pokemon",
+                headerStyle: {
+                  backgroundColor: AppStyles.colors.headerColor,
+                },
+                headerTintColor: "#fff",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                },
+              }}
+            />
+            <Stack.Screen
+              name="AboutPage"
+              component={AboutPage}
+              options={{
+                title: "About this app",
                 headerStyle: {
                   backgroundColor: AppStyles.colors.headerColor,
                 },
