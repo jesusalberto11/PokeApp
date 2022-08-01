@@ -22,7 +22,7 @@
 <!-- About the Project -->
 ## :star2: About the Project
 
-This is project is a client React Native app, created using:
+This is project is a React Native app, created using:
 
 <li><a href="https://reactnative.dev/">React Native</a></li>
 <li><a href="https://reactnavigation.org/">React Natigation</a></li>
@@ -55,7 +55,7 @@ This is project is a client React Native app, created using:
 <!-- Features -->
 ### :dart: Features
 
-- Vue Router
+- React Native Navigation
 - Custom loaders
 - API Calls
 - Responsive Desing
@@ -69,7 +69,7 @@ This is project is a client React Native app, created using:
 
 - To run this project you need:
   * NodeJS
-  * Vue JS (Min. Ver. 3.0)
+  * Expo Cli (Min. 5.5.1)
 
 Once you have that, you're ready to go
 
@@ -112,7 +112,6 @@ Start the development server (Web)
 To deploy this project please check the following link:
 
 <a href="https://docs.expo.dev/build/setup/" target="_SEJ" rel="”noreferrer”"> Check Expo Building Docs</a>
-```
 
 <!-- Contributing -->
 ## :wave: Contributing
@@ -120,7 +119,6 @@ To deploy this project please check the following link:
 <a href="https://github.com/Louis3797/awesome-readme-template/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Louis3797/awesome-readme-template" />
 </a>
-
 
 Contributions are always welcome!
 
