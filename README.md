@@ -34,15 +34,15 @@ This is project is a client React Native app, created using:
 ### :camera: Screenshots
 
 <div align="center"> 
-  <img src="https://github.com/jesusalberto11/PokeApp/blob/main/assets/app-img-1.jpg" alt="Api_Image_1" />
-  <img src="https://github.com/jesusalberto11/PokeApp/blob/main/assets/app-img-2.jpg" alt="Api_Image_2" />
-  <img src="https://github.com/jesusalberto11/PokeApp/blob/main/assets/app-img-3.jpg" alt="Api_Image_3" />
+  <img src="https://github.com/jesusalberto11/PokeApp/blob/main/assets/app-img-1.jpg" alt="Api_Image_1" width="200" height="auto" />
+  <img src="https://github.com/jesusalberto11/PokeApp/blob/main/assets/app-img-2.jpg" alt="Api_Image_2" width="200" height="auto" />
+  <img src="https://github.com/jesusalberto11/PokeApp/blob/main/assets/app-img-3.jpg" alt="Api_Image_3" width="200" height="auto" />
 </div>
 
 <div align="center"> 
-  <img src="https://github.com/jesusalberto11/PokeApp/blob/main/assets/app-img-4.jpg" alt="Api_Image_4" />
-  <img src="https://github.com/jesusalberto11/PokeApp/blob/main/assets/app-img-5.jpg" alt="Api_Image_5" />
-  <img src="https://github.com/jesusalberto11/PokeApp/blob/main/assets/app-img-6.jpg" alt="Api_Image_6" />
+  <img src="https://github.com/jesusalberto11/PokeApp/blob/main/assets/app-img-4.jpg" alt="Api_Image_4" width="200" height="auto" />
+  <img src="https://github.com/jesusalberto11/PokeApp/blob/main/assets/app-img-5.jpg" alt="Api_Image_5" width="200" height="auto" />
+  <img src="https://github.com/jesusalberto11/PokeApp/blob/main/assets/app-img-6.jpg" alt="Api_Image_6" width="200" height="auto" />
 </div>
 
 <!-- TechStack -->
